@@ -19,3 +19,8 @@ def index(request):
 
     #return HttpResponse("Hello Runtime Terror!")
     return render(request,"insertCars.html")
+
+def transaction(request):
+
+
+    return (HttpResponse("yo it's tori"))
