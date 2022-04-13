@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <h1> Transactions </h1>
+</head>
+<body>
+
+<form action="/Kars4U_components/transaction" method="post">
+    {% csrf_token %}
+    State: <input id = "state" type = "text" name = "state">
+    <br>
+    License Plate: <input id = "license plate" type = "text" name = "license plate">
+    <br>
+    Make: <input id = "make" type = "text" name = "make">
+    <br>
+    Model: <input id = "model" type = "text" name = "model">
+    <br>
+    Color: <input id = "color" type = "text" name = "color">
+    <br>
+    Car Type: <input id = "car type" type = "text" name = "car type">
+    <br>
+    <input type = "submit" value = "Enter">
+</form>
+
+
+</body>
+</html>
