@@ -1,3 +1,4 @@
+import sqlite3
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Car, Transaction
@@ -40,7 +41,15 @@ def transaction_report(request):
     if request.method == 'POST':
         start_date = request.POST["start_date"]
         end_date = request.POST["end_date"]
+        conn = sqlite3.connect("db.sqlite3")
+        cursor = conn.cursor()
+        date_query = """SELECT e.name, cust.name, c.make, c.model, c.color, c.car_type, c.license_plate, t.price
+        FROM Kars4U_components_transaction t left outer join Kars4U_components_employee e on e.employee_id = t.employee_id
+        left outer join Kars4U_components_customer cust on cust.customer_id = t.customer_id
+        left outer join Kars4U_components_car c on c.car_id = t.car_id
+        WHERE (?) >= t.start_date AND (?) <= end_date;
+        """
+        transaction_list = list(cursor.execute(date_query, [start_date], [end_date]))
         
-
         
     return render(request,"transactionReport.html")
