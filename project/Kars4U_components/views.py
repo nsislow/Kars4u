@@ -37,9 +37,10 @@ def transaction(request):
 
 def transaction_report(request):
 
-    if request.method == 'GET':
-        start_date = request.GET["start_date"]
-        end_date = request.GET["end_date"]
+    if request.method == 'POST':
+        start_date = request.POST["start_date"]
+        end_date = request.POST["end_date"]
+        
 
         
     return render(request,"transactionReport.html")
