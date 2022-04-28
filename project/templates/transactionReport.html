@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <h1> Transactions Form Report </h1>
+    <h2> View Transactions Between </h2>
+</head>
+<body>
+
+<form action="/Kars4U_components/transaction/report" method="get">
+    {% csrf_token %}
+    
+    Start Date: <input id = "start_date" type = "text" name = "start_date">
+    <br>
+    End Date: <input id = "end_date" type = "text" name = "end_date">
+    <br>
+    type = "submit" value = "Search">
+</form>

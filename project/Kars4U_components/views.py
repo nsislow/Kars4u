@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Car
+from .models import Car, Transaction
 
 
 def index(request):
@@ -22,5 +22,24 @@ def index(request):
 
 def transaction(request):
 
+    if request.method == 'POST':
+        employee_id = request.POST.get("employee_id")
+        customer_id = request.POST["customer_id"]
+        start_date = request.POST["start_date"]
+        end_date = request.POST["end_date"]
+        car_id = request.POST["car_id"]
+        cost = request.POST["cost"]
 
-    return (HttpResponse("yo it's tori"))
+        transaction = Transaction(employee_id = employee_id, customer_id = customer_id, start_date = start_date,
+        end_date = end_date, car_id = car_id, cost =  cost)
+        transaction.save()
+    return render(request,"newTransaction.html")
+
+def transaction_report(request):
+
+    if request.method == 'GET':
+        start_date = request.GET["start_date"]
+        end_date = request.GET["end_date"]
+
+        
+    return render(request,"transactionReport.html")

@@ -27,7 +27,9 @@ class Store(models.Model):
 
 class Inventory(models.Model):
     store_id = models.IntegerField(default= 0)
-    count = models.IntegerField(default= 0)
+    sedan_count = models.IntegerField(default= 0)
+    suv_count = models.IntegerField(default= 0)
+    truck_count = models.IntegerField(default= 0)
 
 
 class Transaction(models.Model):
