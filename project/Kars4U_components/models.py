@@ -17,17 +17,20 @@ class Employee(models.Model):
     employee_id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=25)
     store_id = models.IntegerField()
+    currentlyworking = models.BooleanField(default=0)
 
 class Store(models.Model):
     store_id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=25)
     owner = models.CharField(max_length = 25)
     location = models.CharField(max_length= 25)
-    number_of_sales = models.CharField(max_length= 25)
+    number_of_sales = models .CharField(max_length= 25)
 
 class Inventory(models.Model):
     store_id = models.IntegerField(default= 0)
-    count = models.IntegerField(default= 0)
+    sedan_count = models.IntegerField(default= 0)
+    suv_count = models.IntegerField(default=0)
+    truck_count = models.IntegerField(default=0)
 
 
 class Transaction(models.Model):
