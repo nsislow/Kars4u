@@ -33,6 +33,7 @@ def transaction(request):
 
         transaction = Transaction(employee_id = employee_id, customer_id = customer_id, start_date = start_date,
         end_date = end_date, car_id = car_id, cost =  cost)
+        print(transaction)
         transaction.save()
     return render(request,"newTransaction.html")
 
@@ -43,13 +44,16 @@ def transaction_report(request):
         end_date = request.POST["end_date"]
         conn = sqlite3.connect("db.sqlite3")
         cursor = conn.cursor()
-        date_query = """SELECT e.name, cust.name, c.make, c.model, c.color, c.car_type, c.license_plate, t.price
+        date_query = """SELECT e.name, cust.name, c.make, c.model, c.color, c.car_type, c.license_plate, t.cost
         FROM Kars4U_components_transaction t left outer join Kars4U_components_employee e on e.employee_id = t.employee_id
         left outer join Kars4U_components_customer cust on cust.customer_id = t.customer_id
         left outer join Kars4U_components_car c on c.car_id = t.car_id
-        WHERE (?) >= t.start_date AND (?) <= end_date;
+        WHERE (?) <= t.start_date AND (?) >= end_date;
         """
-        transaction_list = list(cursor.execute(date_query, [start_date], [end_date]))
+        data = (start_date, end_date)
+        transaction_list = list(cursor.execute(date_query, data))
+        print(transaction_list)
+        return render(request,"transactionReport.html", {"transaction_list": transaction_list})
         
         
     return render(request,"transactionReport.html")

@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+    <style>
+        table, th, td {
+          border:1px solid black;
+        }
+        </style>
 <head>
     <meta charset="UTF-8">
     <title></title>
@@ -17,3 +22,34 @@
    
     <input type = "submit" value = "Search">
 </form>
+
+<br>
+<br>
+<div class="submain">
+<table style="width:30%">
+  <tr>
+    <th>Employee Name</th>
+    <th>Customer Name</th>
+    <th>Car Make</th>
+    <th>Car Model</th>
+    <th>Car Color</th>
+    <th>Car Type</th>
+    <th>License Plate</th>
+    <th>Price</th>
+  </tr>
+{% for t in transaction_list %}
+  <tr>
+    <td>{{ t.0 }}</td>
+    <td>{{ t.1 }}</td>
+    <td>{{ t.2 }}</td>
+    <td>{{ t.3 }}</td>
+    <td>{{ t.4 }}</td>
+    <td>{{ t.5 }}</td>
+    <td>{{ t.6 }}</td>
+    <td>{{ t.7 }}</td>
+  </tr>
+{% endfor %}
+</table>
+</div>
+<br>
+<br>
