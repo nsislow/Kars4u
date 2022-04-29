@@ -84,5 +84,13 @@ def index(request):
 def test1(request):
     return (HttpResponse("Hellooooadfsasfdo"))
 
+def car_reports(request):
+    if request.method == 'POST':
+        car_type = request.POST.get('car types')
+        data = Car.objects.filter(car_type = car_type).values('make', 'model', 'color', 'car_type', 'license_plate', 'store_id')
+    else:
+        data = Car.objects.all()
+    return render(request, "carReport.html", {"cars": data})
+
 
     #return HttpResponse("Hello Runtime Terror!")
