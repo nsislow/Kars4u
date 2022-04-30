@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <h1> Transactions </h1>
+</head>
+<body>
+
+    <button><a href="/Kars4U_components/transaction/report">Transaction Search</a></button>
+<br>
+<br>
+
+<h2> New Transaction </h2>
+
+<form action="/Kars4U_components/transaction" method="post">
+    {% csrf_token %}
+    Customer ID: <input id = "customer_id" type = "text" name = "customer_id">
+    <br>
+    Employee ID: <input id = "employee_id" type = "text" name = "employee_id">
+    <br>
+    Start Date: <input id = "start_date" type = "date" name = "start_date">
+    <br>
+    End Date: <input id = "end_date" type = "date" name = "end_date">
+    <br>
+    Car ID: <input id = "car_id" type = "text" name = "car_id">
+    <br>
+    Cost: <input id = "cost" type = "text" name = "cost">
+    <br>
+    <input type = "submit" value = "Submit Transaction">
+</form>
+
+
+</body>
+</html>

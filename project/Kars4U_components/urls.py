@@ -10,6 +10,9 @@ urlpatterns = [
     path('employeeWorking/', views.employeeWorking, name = 'employeeWorking'),
     path('viewEmployees/', views.viewEmployees, name = 'viewEmployees'),
     path('EmployeesPerStore/', views.employeeperstore, name = 'EmployeesPerStore'),
-    path('manageEmployees/', views.manageEmployees, name = 'manageEmployees')
+    path('manageEmployees/', views.manageEmployees, name = 'manageEmployees'),
+    path('transaction', views.transaction, name='transaction'),
+    path('transaction/report', views.transaction_report, name='transaction_report'),
+    path('customerRequest', views.customerRequest, name='customerRequest'),
+    path('customerReport', views.customerReport, name='customerReport')
 ]
-
