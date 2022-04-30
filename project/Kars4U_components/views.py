@@ -8,6 +8,9 @@ from .models import Car, Transaction, Customer
 import sqlite3
 from django.utils.datastructures import MultiValueDictKeyError
 
+def home(request):
+    return render(request, "home.html")
+
 
 def index(request):
     if request.method == 'POST' and request.POST["add or delete car"] == "add car" :
