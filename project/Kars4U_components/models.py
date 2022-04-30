@@ -11,6 +11,7 @@ class Car(models.Model):
     car_type = models.CharField(max_length=25)
     is_available = models.BooleanField(max_length=10)
     price = models.IntegerField(default= 0)
+    store_id = models.IntegerField(default=0)
 
 
 class Employee(models.Model):
