@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 import sqlite3
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -35,7 +34,7 @@ def transaction(request):
         transaction = Transaction(employee_id = employee_id, customer_id = customer_id, start_date = start_date,
         end_date = end_date, car_id = car_id, cost =  cost)
         car = Car.objects.get(car_id = car_id)
-        if (car != NULL):
+        if (car != None):
             car.price = cost
         print(transaction)
         transaction.save()
