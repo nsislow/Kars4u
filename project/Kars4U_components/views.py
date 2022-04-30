@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Employee, Inventory
 from .models import Store
-from .models import Car, Transaction
+from .models import Car, Transaction, Customer
 import sqlite3
 from django.utils.datastructures import MultiValueDictKeyError
 
