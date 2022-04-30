@@ -73,7 +73,7 @@ def customerReport(request):
         cursor = conn.cursor()
         request_list = list(cursor.execute(query, data))
         print(request_list)
-        return render(request,"customerReport.html", {"customerData": request_list})
+        return render(request,"customerReport.html", {"request_list": request_list})
         
         
     return render(request,"customerReport.html")

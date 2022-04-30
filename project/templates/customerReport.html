@@ -26,18 +26,18 @@ table, th, td {
             <th>License Plate</th>
             <th>Store ID</th>
         </tr>
-        {% for car in customerData %}
+        {% for car in request_list %}
         <tr>
-            <td>{{car.state}}</td>
-            <td>{{car.make}}</td>
-            <td>{{car.model}}</td>
-            <td>{{car.color}}</td>
-            <td>{{car.car_type}}</td>
-            <td>{{car.is_available}}</td>
-            <td>{{car.car_id}}</td>
-            <td>{{car.price}}</td>
-            <td>{{car.license_plate}}</td>
-            <td>{{car.store_id}}</td>
+            <td>{{car.0}}</td>
+            <td>{{car.1}}</td>
+            <td>{{car.2}}</td>
+            <td>{{car.3}}</td>
+            <td>{{car.4}}</td>
+            <td>{{car.5}}</td>
+            <td>{{car.6}}</td>
+            <td>{{car.7}}</td>
+            <td>{{car.8}}</td>
+            <td>{{car.9}}</td>
         </tr>
         {% endfor %}
     </table>
