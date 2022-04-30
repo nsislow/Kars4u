@@ -27,6 +27,12 @@ def customerReport(request):
     if request.method == 'POST':
         store = request.POST.get("store")
         isAvailable = request.POST.get("is_available")
+
+        if isAvailable == 'on':
+            isAvailable = True
+        else:
+            isAvailable == False
+        
         try:
             minPrice = request.POST["minPrice"]
         except MultiValueDictKeyError:
@@ -44,19 +50,19 @@ def customerReport(request):
             """
         data = (store, isAvailable)
 
-        if minPrice == NULL and maxPrice != NULL:
+        if minPrice == '' and maxPrice != '':
             query = """
             SELECT * FROM Kars4U_components_car
             WHERE (?) = store_id AND (?) = is_available AND (?) >= price;
             """
             data = (store, isAvailable, maxPrice)
-        elif minPrice != NULL and maxPrice == NULL:
+        elif minPrice != '' and maxPrice == '':
             query = """
             SELECT * FROM Kars4U_components_car
             WHERE (?) = store_id AND (?) = is_available AND (?) <= price;
             """
             data = (store, isAvailable, minPrice)
-        elif minPrice != NULL and maxPrice != NULL:
+        elif minPrice != '' and maxPrice != '':
             query = """
             SELECT * FROM Kars4U_components_car
             WHERE (?) = store_id AND (?) = is_available AND (?) <= price AND (?) >= price;
@@ -66,7 +72,8 @@ def customerReport(request):
         conn = sqlite3.connect("db.sqlite3")
         cursor = conn.cursor()
         request_list = list(cursor.execute(query, data))
-        return render(request,"customerReport.html", {"customerRequest": request_list})
+        print(request_list)
+        return render(request,"customerReport.html", {"customerData": request_list})
         
         
     return render(request,"customerReport.html")
