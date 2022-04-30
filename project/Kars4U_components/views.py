@@ -71,7 +71,6 @@ def customerReport(request):
         conn = sqlite3.connect("db.sqlite3")
         cursor = conn.cursor()
         request_list = list(cursor.execute(query, data))
-        print(request_list)
         return render(request,"customerReport.html", {"request_list": request_list})
 
 
