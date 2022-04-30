@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Employee
+from .models import Employee, Inventory
 from .models import Store
 from .models import Car, Transaction
 import sqlite3
