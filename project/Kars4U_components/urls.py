@@ -16,4 +16,10 @@ urlpatterns = [
     path('customerRequest', views.customerRequest, name='customerRequest'),
     path('customerReport', views.customerReport, name='customerReport'),
     path('car_reports/', views.car_reports, name = "car_reports")
+    path('store', views.store, name="store"),
+    path('storeReport', views.storeReport, name="storeReport"),
+    path('storeInventoryReport', views.storeInventoryReport, name="storeInventoryReport"),
+    path('over_under_num_sales', views.overUnderNumSales, name="over_under_num_sales"),
+    path('StoresByOwner', views.storesByOwner, name="StoresByOwner"),
+    path('StoresByLocation', views.storesByLocation, name="StoresByLocation")
 ]

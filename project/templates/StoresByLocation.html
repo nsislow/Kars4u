@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stores By Location</title>
+</head>
+<body>
+<form action="/Kars4U_components/StoresByLocation" method="post">
+    {% csrf_token %}
+    <p>Stores By Location</p>
+    <table style="width:40%">
+        <tr>
+            <th>Store Name</th>
+            <th>Location</th>
+            <th>Number of Sales</th>
+        </tr>
+    {% for i in location %}
+        <tr>
+            <td>{{ i.name}}</td>
+            <td>{{ i.location}}</td>
+            <td>{{ i.number_of_sales}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+</form>
+</body>
+</html>

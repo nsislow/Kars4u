@@ -25,7 +25,7 @@ class Store(models.Model):
     name = models.CharField(max_length=25)
     owner = models.CharField(max_length = 25)
     location = models.CharField(max_length= 25)
-    number_of_sales = models.CharField(max_length= 25)
+    number_of_sales = models .CharField(max_length= 25)
 
 
 class Inventory(models.Model):

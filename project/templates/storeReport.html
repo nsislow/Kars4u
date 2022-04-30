@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <h1> Store Information </h1>
+  <style>
+    .column{
+    float: left;
+    width: 25%
+    }
+    .row:after{
+    content: "";
+    display: table;
+    clear: both;
+    }
+  </style>
+</head>
+<body>
+<form action="/Kars4U_components/storeReport" method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="column">
+            <h2> See Stores Selling Under/Over A Certain Amount Of Cars </h2>
+            *Over also includes stores at the specified number of sales
+            <p>
+                Number Of Sales: <input id= "sales" type ="text" name ="sales">
+                <br>
+                <br>
+                <select name="update" id ="update">
+                    <option value="over">Over Given Amount </option>
+                    <option value="under">Under Given Amount </option>
+                </select>
+                <button type="submit" name="amount" value="amount">Click to See Stores </button>
+            </p>
+        </div>
+        <div class="column">
+            <h2> See Inventory by Store </h2>
+            Store Name: <input id= "name" type ="text" name ="name">
+                <br>
+            <br>
+                <select name="car type" id ="car type">
+                    <option value="sedan">Sedan </option>
+                    <option value="suv">Suv </option>
+                    <option value="truck">Truck </option>
+                </select>
+                <button type="submit" name="inventory" value="inventory">Click to See Stores </button>
+            <p>
+
+            </p>
+        </div>
+        <div class="column">
+            <h2> See All Stores Owned By The Same Person </h2>
+            Owner's Name: <input id="owner name" type="text" name="owner name">
+            <br>
+            <br>
+            <button type="submit" name="owner" value="owner">Click to See Stores </button>
+        </div>
+         <div class="column">
+            <h2> See All Stores In The Same Location </h2>
+             <br>
+            Location: <input id="location name" type="text" name="location name">
+            <br>
+             <br>
+            <button type="submit" name="location" value="location">Click to See Stores </button>
+        </div>
+    </div>
+    <div class="row">
+        {{inventory}}
+    </div>
+</form>
+</body>
+</html>

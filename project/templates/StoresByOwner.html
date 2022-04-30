@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stores By Owner</title>
+</head>
+<body>
+<form action="/Kars4U_components/StoresByOwner" method="post">
+    {% csrf_token %}
+    <p>Stores By Owner</p>
+    <table style="width:40%">
+        <tr>
+            <th>Store Name</th>
+            <th>Owner</th>
+            <th>Number of Sales</th>
+        </tr>
+    {% for s in sales %}
+        <tr>
+            <td>{{s.0}}</td>
+            <td>{{s.1}}</td>
+            <td>{{s.2}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+</form>
+</body>
+</html>
