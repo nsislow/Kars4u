@@ -16,7 +16,7 @@ def index(request):
         make = request.POST.get("make")
         model = request.POST.get("model")
         color = request.POST.get("color")
-        car_type = request.POST.get("car_type")
+        car_type = request.POST.get("car_type1")
         print(car_type)
         is_available = True
         store_id = request.POST["store_id"]
@@ -243,7 +243,7 @@ def transaction_report(request):
 
 def car_reports(request):
     if request.method == 'POST':
-            car_type = request.POST.get('car types')
+            car_type = request.POST.get('car_type')
             data = Car.objects.filter(car_type = car_type).values('make', 'model', 'color', 'car_type', 'license_plate', 'store_id')
     else:
             data = Car.objects.all()
