@@ -14,5 +14,6 @@ urlpatterns = [
     path('transaction', views.transaction, name='transaction'),
     path('transaction/report', views.transaction_report, name='transaction_report'),
     path('customerRequest', views.customerRequest, name='customerRequest'),
-    path('customerReport', views.customerReport, name='customerReport')
+    path('customerReport', views.customerReport, name='customerReport'),
+    path('car_reports/', views.car_reports, name = "car_reports")
 ]
