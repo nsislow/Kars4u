@@ -12,7 +12,7 @@
 <br>
 <br>
 
-<form action="/Kars4U_components/" method="post" name = "add car" id = "add car">
+<form action="/Kars4U_components/cars" method="post" name = "add car" id = "add car">
     {% csrf_token %}
     State: <input id = "state" type = "text" name = "state">
     <br>
@@ -34,7 +34,7 @@
 
 <h1> Delete car here </h1>
 
-<form action="/Kars4U_components/" method="post" name = "delete car" id = "delete car">
+<form action="/Kars4U_components/cars" method="post" name = "delete car" id = "delete car">
     {% csrf_token %}
     Car ID: <input id = "car id" type = "text" name = "car id">
     <br>
