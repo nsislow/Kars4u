@@ -15,6 +15,7 @@ def index(request):
         model = request.POST.get("model")
         color = request.POST.get("color")
         car_type = request.POST.get("car_type")
+        print(car_type)
         is_available = True
         store_id = request.POST["store id"]
         car_type = car_type.title()
