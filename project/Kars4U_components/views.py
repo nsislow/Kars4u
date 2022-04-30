@@ -209,16 +209,19 @@ def transaction(request):
         customer_id = request.POST["customer_id"]
         start_date = request.POST["start_date"]
         end_date = request.POST["end_date"]
-        car_id = request.POST["car_id"]
+        car_id1 = request.POST["car_id"]
         cost = request.POST["cost"]
 
         transaction = Transaction(employee_id = employee_id, customer_id = customer_id, start_date = start_date,
-        end_date = end_date, car_id = car_id, cost =  cost)
-        car = Car.objects.get(car_id = car_id)
+        end_date = end_date, car_id = car_id1, cost =  cost)
+        transaction.save()
+
+        car = Car.objects.get(car_id = car_id1)
         if (car != None):
             car.price = cost
+        car.save()
         print(transaction)
-        transaction.save()
+        
     return render(request,"newTransaction.html")
 
 def transaction_report(request):
