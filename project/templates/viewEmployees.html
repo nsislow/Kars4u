@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <h1> View Employees </h1>
+</head>
+<body>
+<form action="/Kars4U_components/viewEmployees/" method="post">
+    {% csrf_token %}
+    <label for="Store_id">Store ID= </label>
+    <select name="Store_id" id="Store_id">
+        {% for store in stores %}
+            <option value="{{ store.store_id }}">{{ store.name }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <input type = "submit" value = "Enter">
+</form>
+<br>
+<br>
+<div class="submain">
+<table style="width:30%">
+  <tr>
+    <th>Employee ID</th>
+    <th>Name</th>
+    <th>Currently Working</th>
+  </tr>
+{% for emp in employees %}
+  <tr>
+    <td>{{ emp.employee_id}}</td>
+    <td>{{ emp.name}}</td>
+    <td>{{ emp.currentlyworking}}</td>
+  </tr>
+{% endfor %}
+</table>
+</div>
+<br>
+<br>
+<button><a href="/Kars4U_components/viewEmployees/">View All Employees</a></button>
+<button><a href="/Kars4U_components/manageEmployees/">Manage Employees</a></button>
+</body>
+</html>
