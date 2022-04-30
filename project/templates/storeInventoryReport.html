@@ -8,7 +8,23 @@
 <form action="/Kars4U_components/storeInventoryReport" method="post">
     {% csrf_token %}
     <h1 Inventory for Store></h1>
-    <p>Here is the Body of the text</p>
+    <p>Store Inventory Report</p>
+    <table style="width:30%">
+        <tr>
+            <th>Store Name</th>
+            <th>Store Location</th>
+            <th>Car Count</th>
+        </tr>
+    {% for s in stores %}
+
+        <tr>
+            <td>{{s.1}}</td>
+            <td>{{s.2}}</td>
+            <td>{{s.3}}</td>
+        </tr>
+
+    {% endfor %}
+    </table>
 </form>
 
 </body>

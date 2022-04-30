@@ -98,14 +98,10 @@ def storeReport(request):
                                                     FROM Kars4U_components_store as S left outer join 
                                                     Kars4U_components_inventory as I on S.store_id = I.store_id 
                                                     WHERE S.name = (?);""", [inventory_store_name]))
-                if car_type == "all":
-                    car_list = list(cursor.execute("""SELECT S.store_id, S.name, S.location, I.suv_count, I.sedan_count, 
-                                                    I.truck_count 
-                                                    FROM Kars4U_components_store as S left outer join 
-                                                    Kars4U_components_inventory as I on S.store_id = I.store_id 
-                                                    WHERE S.name = (?);""", [inventory_store_name]))
-                cursor.close()
 
+
+                car_list_copy = {"stores": car_list}
+                return render(request, "storeInventoryReport.html", car_list_copy)
 
 
         # under or over given number of sales
@@ -118,16 +114,35 @@ def storeReport(request):
                 cursor = conn.cursor()
                 store_list_sales = "error has occurred"
                 if over_under == "over":
-                    store_list_sales = list(cursor.execute("""Select * FROM Kars4U_components_store 
+                    store_list_sales = list(cursor.execute("""Select name, number_of_sales FROM Kars4U_components_store 
                                                             WHERE number_of_sales >= ?""", [amount_sales]))
                 if over_under == "under":
-                    store_list_sales = list(cursor.execute("""Select * FROM Kars4U_components_store 
+                    store_list_sales = list(cursor.execute("""Select name, number_of_sales FROM Kars4U_components_store 
                                                             WHERE number_of_sales < ?""", [amount_sales]))
-                print(store_list_sales)
+
+            store_list_copy = {"sales": store_list_sales}
+            return render(request, "over_under_num_sales.html", store_list_copy)
+        #owner of stores
+        if request.POST.get("owner"):
+            owner_name = request.POST.get("owner name")
+            owner_name.title()
+            conn = sqlite3.connect('db.sqlite3')
+            cursor = conn.cursor()
+
+            stores_with_owner = list(cursor.execute("""Select name, owner, number_of_sales FROM Kars4U_components_store 
+                                                                        WHERE owner == ?""", [owner_name]))
+            stores_copy = {"sales": stores_with_owner}
+            return render(request, "StoresByOwner.html", stores_copy)
+
+        #stores in same location
+        if request.POST.get("location"):
+            location_name = request.POST.get("location name")
+            location_name.title()
+            storeData = Store.objects.all()
+            data = Store.objects.filter(location=location_name)
+            return render(request, "StoresByLocation.html", {'location': data, 'store': storeData})
 
 
-
-        return render(request, "storeInventoryReport.html")
     return render(request, "storeReport.html")
 
 
@@ -135,3 +150,15 @@ def storeInventoryReport(request):
     if request.methond == 'POST':
         return render(request, "storeInventoryReport.html")
     return render(request, "storeInventoryReport.html")
+def overUnderNumSales(request):
+    if request.methond == 'POST':
+        return render(request, "over_under_num_sales.html")
+    return render(request, "over_under_num_sales.html")
+def storesByOwner(request):
+    if request.methond == 'POST':
+        return render(request, "StoresByOwner.html")
+    return render(request, "StoresByOwner.html")
+def storesByLocation(request):
+    if request.methond == 'POST':
+        return render(request, "StoresByLocation.html")
+    return render(request, "StoresByLocation.html")

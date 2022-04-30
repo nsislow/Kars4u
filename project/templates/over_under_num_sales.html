@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Over or Under Certain Number of Sales</title>
 </head>
 <body>
-$END$
+<form action="/Kars4U_components/over_under_num_sales" method="post">
+    {% csrf_token %}
+    <p>Number of Sales Over or Under</p>
+    <table style="width:40%">
+        <tr>
+            <th>Store Name</th>
+            <th>Number of Sales</th>
+        </tr>
+    {% for s in sales %}
+        <tr>
+            <td>{{s.0}}</td>
+            <td>{{s.1}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+</form>
 </body>
 </html>
