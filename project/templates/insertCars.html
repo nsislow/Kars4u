@@ -19,9 +19,9 @@
     <br>
     Color: <input id = "color" type = "text" name = "color">
     <br>
-    Car Type: <input id = "car type" type = "text" name = "car type">
+    Car Type: <input id = "car_type" type = "text" name = "car_type">
     <br>
-    Store ID: <input id = "store id" type = "text" name = "store id">
+    Store ID: <input id = "store_id" type = "text" name = "store_id">
     <br>
     <input type = "hidden" name = "add or delete car" value = "add car">
     <input type = "submit" value = "Enter">
@@ -42,7 +42,7 @@
 
 <form action="/Kars4U_components/car_reports/" method = "post" name = "select car type" id = "select car type">
     {% csrf_token %}
-    <select name = "car types" id = "car types">
+    <select name = "car_type" id = "car_type">
         <option value = "Sedan">Sedan</option>
         <option value = "Truck">Truck</option>
         <option value = "Suv">Suv</option>

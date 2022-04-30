@@ -19,7 +19,7 @@ def index(request):
         car_type = request.POST.get("car_type")
         print(car_type)
         is_available = True
-        store_id = request.POST["store id"]
+        store_id = request.POST["store_id"]
         car_type = car_type.title()
         car = Car(state = state, store_id = store_id, license_plate = license_plate, make = make, model = model, color = color, car_type = car_type, is_available = True)
         car.save()
