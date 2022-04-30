@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .models import Car
 from .models import Employee
 from .models import Store
+import sqlite3
 
 
 def index(request):
@@ -26,6 +27,7 @@ def index(request):
 def addemployee(request):
     data = Store.objects.all()
     stores = {"Stores": data}
+    print(data)
     if request.method == 'POST':
         name = request.POST.get("Name")
         store_id = request.POST.get("Store_id")
@@ -68,3 +70,13 @@ def viewEmployees(request):
 
 def manageEmployees(request):
     return render(request, "manageEmployees.html")
+
+def employeeperstore(request):
+    connection = sqlite3.connect("db.sqlite3")
+    cursor = connection.cursor()
+    data = list(cursor.execute("SELECT s.store_id, s.name, COUNT(e.employee_id) as 'Total Employees'"
+                               "From Kars4U_components_store s Left JOIN Kars4U_components_employee e ON s.store_id = "
+                               "e.store_id GROUP BY s.store_id, s.name;"))
+    cursor.close()
+    return render(request, "EmployeesPerStore.html", {'stores': data})
+
