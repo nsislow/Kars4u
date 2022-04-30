@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <h1> Please enter car information here </h1>
+    <h1> Add car information here </h1>
 </head>
 <body>
 
-<form action="/Kars4U_components/" method="post">
+<form action="/Kars4U_components/" method="post" name = "add car" id = "add car">
     {% csrf_token %}
     State: <input id = "state" type = "text" name = "state">
     <br>
@@ -21,8 +21,38 @@
     <br>
     Car Type: <input id = "car type" type = "text" name = "car type">
     <br>
+    Store ID: <input id = "store id" type = "text" name = "store id">
+    <br>
+    <input type = "hidden" name = "add or delete car" value = "add car">
     <input type = "submit" value = "Enter">
 </form>
+
+<h1> Delete car here </h1>
+
+<form action="/Kars4U_components/" method="post" name = "delete car" id = "delete car">
+    {% csrf_token %}
+    Car ID: <input id = "car id" type = "text" name = "car id">
+    <br>
+    <input type = "hidden" name = "add or delete car" value = "delete car">
+
+    <input type = "submit" value = "Enter">
+</form>
+
+<h1> Select which type of car you would like to see we have in stock </h1>
+
+<form action="/Kars4U_components/car_reports/" method = "post" name = "select car type" id = "select car type">
+    {% csrf_token %}
+    <select name = "car types" id = "car types">
+        <option value = "Sedan">Sedan</option>
+        <option value = "Truck">Truck</option>
+        <option value = "Suv">Suv</option>
+
+
+    </select>
+    <input type = "submit" value = "Enter">
+</form>
+
+
 
 
 </body>

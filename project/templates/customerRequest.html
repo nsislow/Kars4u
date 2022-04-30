@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <h1> Find your ideal car! </h1>
+</head>
+<body>
+
+<form action="/Kars4U_components/customerReport" method="POST">
+    {% csrf_token %}
+    Store: <input id = "store" type = "text" name = "store">
+    <br>
+    Available?: <input id = "is_available" type = "checkbox" name = "is_available">
+    <br>
+    Minimum Price (optional): <input id = "minPrice" type = "text" name = "minPrice">
+    <br>
+    Maximum Price (optional): <input id = "maxPrice" type = "text" name = "maxPrice">
+    <br>
+    <input type = "submit" value = "Enter">
+</form>
+
+
+</body>
+</html>
