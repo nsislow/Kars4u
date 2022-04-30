@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <h1> view customer request </h1>
+</head>
+<body>
+<br>
+<div class="submain">
+    <table style = "width:30%">
+        <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Car Type</th>
+            <th>License Plate</th>
+            <th>Price</th>
+            <th>Store ID</th>
+        </tr>
+        {% for car in cars %}
+        <tr>
+            <td>{{car.make}}</td>
+            <td>{{car.model}}</td>
+            <td>{{car.color}}</td>
+            <td>{{car.car_type}}</td>
+            <td>{{car.price}}</td>
+            <td>{{car.license_plate}}</td>
+            <td>{{car.store_id}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<br>
+<br>
+</body>
+</html>

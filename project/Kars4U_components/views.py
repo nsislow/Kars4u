@@ -26,7 +26,7 @@ def customerRequest(request):
 def customerReport(request):
     if request.method == 'POST':
         store = request.POST.get("store")
-        isAvailable = request.POST.get("isAvailable")
+        isAvailable = request.POST.get("is_available")
         try:
             minPrice = request.POST["minPrice"]
         except MultiValueDictKeyError:
